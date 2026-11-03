@@ -24,6 +24,9 @@ object PhoneStorageApi {
     private const val MAX_LIST_ITEMS = 3000
     private const val COPY_BUFFER_SIZE = 64 * 1024
 
+    /** MediaMetadataRetriever.METADATA_KEY_LYRICS (API 30); dipakai literal agar aman di minSdk 24. */
+    private const val METADATA_KEY_LYRICS = 1000
+
     data class Root(
         val key: String,
         val label: String,
@@ -431,7 +434,7 @@ object PhoneStorageApi {
             info.put("artist", retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST) ?: "")
             info.put("album", retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM) ?: "")
             info.put("durationMs", retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLongOrNull() ?: 0L)
-            info.put("hasEmbeddedLyrics", !retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_LYRICS).isNullOrBlank())
+            info.put("hasEmbeddedLyrics", !retriever.extractMetadata(METADATA_KEY_LYRICS).isNullOrBlank())
             info.put("hasArtwork", retriever.getEmbeddedPicture() != null)
         } catch (e: Exception) {
             info.put("title", file.nameWithoutExtension)
@@ -466,7 +469,7 @@ object PhoneStorageApi {
         val embedded = runCatching {
             retriever = MediaMetadataRetriever()
             retriever.setDataSource(file.absolutePath)
-            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_LYRICS)
+            retriever.extractMetadata(METADATA_KEY_LYRICS)
         }.getOrNull().also { runCatching { retriever?.release() } }
         if (!embedded.isNullOrBlank()) return embedded to "embedded"
         return "" to "none"

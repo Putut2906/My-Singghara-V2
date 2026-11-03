@@ -736,6 +736,13 @@ fun MainAppContent(viewModel: MainViewModel) {
                 val driveResult = GoogleDriveUpdateManager.checkForDriveUpdate(context)
                 if (driveResult is DriveUpdateCheckState.UpdateAvailable) {
                     startupDriveUpdateResult = driveResult
+                    NotificationScheduler.showUpdateAvailableNotification(
+                        context = context,
+                        newVersion = driveResult.latestApk.name,
+                        releaseUrl = driveResult.latestApk.url,
+                        apkUrl = driveResult.latestApk.url,
+                        releaseNotes = driveResult.detectionReason
+                    )
                 }
             }
             // Fallback to GitHub update check if no Drive update detected
@@ -745,6 +752,13 @@ fun MainAppContent(viewModel: MainViewModel) {
                     val result = GitHubUpdateManager.checkForUpdate(context)
                     if (result is UpdateCheckState.UpdateAvailable) {
                         startupUpdateResult = result
+                        NotificationScheduler.showUpdateAvailableNotification(
+                            context = context,
+                            newVersion = result.newVersion,
+                            releaseUrl = result.release.htmlUrl,
+                            apkUrl = result.apkAsset.browserDownloadUrl,
+                            releaseNotes = result.release.body
+                        )
                     }
                 }
             }

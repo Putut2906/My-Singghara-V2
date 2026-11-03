@@ -96,6 +96,14 @@ class AlarmReceiver : BroadcastReceiver() {
                 NotificationScheduler.cancelWebAccessNotification(context)
                 com.example.ui.MainViewModel.instance?.onRejectWebAccess()
             }
+
+            NotificationScheduler.ACTION_DISMISS_APP_UPDATE -> {
+                context.getSharedPreferences("mysingghara_prefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .putString("dismissed_update_version", intent.getStringExtra("DISMISSED_UPDATE_VERSION").orEmpty())
+                    .apply()
+                NotificationScheduler.cancelUpdateNotification(context)
+            }
         }
     }
 }

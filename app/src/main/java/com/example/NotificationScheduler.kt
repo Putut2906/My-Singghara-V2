@@ -28,12 +28,14 @@ object NotificationScheduler {
     const val CHANNEL_WEB_SECURITY = "web_security_channel"
     const val CHANNEL_HOLIDAY = "holiday_channel"
     const val CHANNEL_FCM = "fcm_cloud_messaging_channel"
+    const val CHANNEL_APP_UPDATE = "app_update_channel"
 
     const val NOTIFICATION_ID_AGENDA = 8888
     const val NOTIFICATION_ID_PRAYER = 9999
     const val NOTIFICATION_ID_WEB_SECURITY = 7777
     const val NOTIFICATION_ID_HOLIDAY = 6666
     const val NOTIFICATION_ID_FCM = 5555
+    const val NOTIFICATION_ID_APP_UPDATE = 4444
 
     const val ACTION_DAILY_AGENDA_CHECK = "com.example.ACTION_DAILY_AGENDA_CHECK"
     const val ACTION_MORNING_HOLIDAY_CHECK = "com.example.ACTION_MORNING_HOLIDAY_CHECK"
@@ -41,6 +43,7 @@ object NotificationScheduler {
     const val ACTION_CANCEL_AGENDA_NOTIFICATION = "com.example.ACTION_CANCEL_AGENDA_NOTIFICATION"
     const val ACTION_STOP_AZAN = "com.example.ACTION_STOP_AZAN"
     const val ACTION_REJECT_WEB_ACCESS = "com.example.ACTION_REJECT_WEB_ACCESS"
+    const val ACTION_DISMISS_APP_UPDATE = "com.example.ACTION_DISMISS_APP_UPDATE"
 
     const val EXTRA_PRAYER_NAME = "extra_prayer_name"
     const val EXTRA_PRAYER_TIME = "extra_prayer_time"
