@@ -1,0 +1,6 @@
+{
+  "name": "My Singghara",
+  "description": "Aplikasi produktivitas lengkap: Telegram AI Assistant Web Connect Akses PC (100% Offline) mode terang/gelap sticky bottom & header input, Manajemen Arisan Keluarga (aturan dasar 4 pilar, pencatatan iuran, kas sosial, pengocokan transparan & kuitansi), jadwal harian, data karyawan & murid ID Card QR, Al-Qur'an, pembukuan usaha, kasir POS, dan mini games.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
